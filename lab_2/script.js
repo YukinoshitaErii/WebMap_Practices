@@ -8,6 +8,8 @@ const map = new mapboxgl.Map({
   // Replace YOUR_STYLE_URL with your style URL.
   style: "mapbox://styles/christ000/cld05ga4m000615phmmwfb069"
 });
+
+
 // hover interaction
 map.on("mousemove", (event) => {
   const dzone = map.queryRenderedFeatures(event.point, {
