@@ -6,5 +6,5 @@ The lab_2 folder contains webmap called ```simd_2020.html``` indicating concentr
 
 The Map can be viewed via https://yukinoshitaerii.github.io/WebMap_Practices/lab_2/simd_2020.html.
 
-Data from SpatialData.gov.scot https://www.spatialdata.gov.scot/geonetwork/srv/eng/catalog.search#/metadata/02866b0b-66e5-46ab-9b1c-d433dc3c2fae.
+Data from SpatialData.gov.scot, https://www.spatialdata.gov.scot/geonetwork/srv/eng/catalog.search#/metadata/02866b0b-66e5-46ab-9b1c-d433dc3c2fae.
 
