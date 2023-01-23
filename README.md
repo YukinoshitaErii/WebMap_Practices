@@ -4,7 +4,7 @@ These are a series practices about web map during Web and Mobile Mapping in the 
 ### Week 1
 The lab_1 folder contains web maps indicate distribution of fuel station in London. There are two different styles map respectively located in folder I and folder II.
 
-URL: https://yukinoshitaerii.github.io/WebMap_Practices/lab_1/I/fuel_station_london.html and https://yukinoshitaerii.github.io/WebMap_Practices/lab_1/II/fuel_station_london.html.
+URL: https://yukinoshitaerii.github.io/WebMap_Practices/lab_1/I/fuel_station_london.html and https://yukinoshitaerii.github.io/WebMap_Practices/lab_1/II/fuel_station_london_II.html.
 
 Data from London Datastore(https://data.london.gov.uk).
 
