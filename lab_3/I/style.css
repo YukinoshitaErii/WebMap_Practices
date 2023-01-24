@@ -3,6 +3,7 @@ body {
   padding: 0;
   overflow: hidden;
 }
+
 #map {
   position: absolute;
   top: 0;
@@ -17,10 +18,11 @@ body * {
   -ms-user-select: none;
   user-select: none;
 }
-body * {
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+
+div.map {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
 }
+
