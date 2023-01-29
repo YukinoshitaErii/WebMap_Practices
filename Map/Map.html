@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>New York Bronx Restaurant Inspection</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1' />
+    <link rel="stylesheet" href="./style.css">
+    <!-- Mapbox JS API !-->
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.js'></script>
+    <!-- Mapbox CSS!-->
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.css' rel='stylesheet' />
+</head>
+
+<body>
+    <div id='map'></div>
+    <div id="console">
+        <h1>Bronx Restaurant Inspection</h1>
+        <p>Data from <a href='https://data.cityofnewyork.us/Health/DOHMH-New-York-City-Restaurant-Inspection-Results/43nn-pn8j'>NYC OpenData</a> Updated on January 29, 2023</p>
+        <div class='session'>
+            <h2>Grade</h2>
+            <div class='row' id='filters'>
+                <input id='all' type='radio' name='toggle' value='all' checked='checked'>
+                <label for='all'>All</label>
+                <input id='A' type='radio' name='toggle' value='A'>
+                <label for='A'>A</label>
+                <input id='B' type='radio' name='toggle' value='B'>
+                <label for='B'>B</label>
+                <input id='C' type='radio' name='toggle' value='C'>
+                <label for='C'>C</label>
+
+            </div>
+        </div>
+    </div>
+
+
+
+<script src="./script.js"></script>
+</body>
+</html>
