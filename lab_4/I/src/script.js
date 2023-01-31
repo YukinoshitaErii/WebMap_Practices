@@ -1,10 +1,9 @@
 /*Original example from: https://github.com/tomik23/leaflet-examples */
 
-
 // config map
 let config = {
-    minZoom: 2,
-    maxZoom: 18
+  minZoom: 2,
+  maxZoom: 18
 };
 // magnification with which the map will start
 const zoom = 4;
@@ -18,80 +17,167 @@ const map = L.map("map", config).setView([lat, lng], zoom);
 // Used to load and display tile layers on the map
 // Most tile servers require attribution, which you can set under `Layer`
 L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    attribution:
-        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  attribution:
+    '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 
 // If it is an online geojson, we need to fetch it from the source.
 const data_url =
-    "https://raw.githubusercontent.com/Ziqi-Li/GEOG5015-WMM-Data-Repo/main/data/features.geojson";
+  "https://raw.githubusercontent.com/Ziqi-Li/GEOG5015-WMM-Data-Repo/main/data/features.geojson";
+
+//Define an empty html for the list and
+let html_list = "";
+
+//Define an empty layer for the geojson
+let geoJson;
 
 //Asynchronous way to fetch data, if it is positive, then do any processing to the data.
 fetch(data_url)
-    .then(function (response) {
-        console.log(response.json())
-        return response.json();
-    })
-    .then(function (data) {
-        //All the code for displaying the data go below:
-        console.log(data)
-        //Define the classification and color first
-        function getColor(d) {
-            return d > 1000
-                ? "#800026"
-                : d > 500
-                    ? "#BD0026"
-                    : d > 200
-                        ? "#E31A1C"
-                        : d > 100
-                            ? "#FC4E2A"
-                            : d > 50
-                                ? "#FD8D3C"
-                                : d > 20
-                                    ? "#FEB24C"
-                                    : d > 10
-                                        ? "#FED976"
-                                        : "#FFEDA0";
-        }
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function (data) {
+    //All the code for displaying the data go below:
 
-        //Apply this to the data
-        function style(feature) {
-            return {
-                fillColor: getColor(feature.properties.density), //this is the field to be colored
-                weight: 2,
-                opacity: 1,
-                color: "white",
-                dashArray: "3",
-                fillOpacity: 0.7
-            };
-        }
+    //Define the classification and color first
+    function getColor(d) {
+      return d > 1000
+        ? "#800026"
+        : d > 500
+        ? "#BD0026"
+        : d > 200
+        ? "#E31A1C"
+        : d > 100
+        ? "#FC4E2A"
+        : d > 50
+        ? "#FD8D3C"
+        : d > 20
+        ? "#FEB24C"
+        : d > 10
+        ? "#FED976"
+        : "#FFEDA0";
+    }
 
-        //Add this to the map using the style defined above
-        L.geoJson(data, { style: style }).addTo(map);
+    //Apply this to the data
+    function style(feature) {
+      return {
+        fillColor: getColor(feature.properties.density), //this is the field to be colored
+        weight: 2,
+        opacity: 1,
+        color: "white",
+        dashArray: "3",
+        fillOpacity: 0.7
+      };
+    }
 
-        //Legend code goes below
-        var legend = L.control({ position: "bottomright" });
+    //Add this to the map using the style defined above
+    geoJson = L.geoJson(data, { style: style, onEachFeature }).addTo(map);
 
-        legend.onAdd = function (map) {
-            //using JS to create a div with id "info legend"
-            var div = L.DomUtil.create("div", "info legend");
-            const classes = [0, 10, 20, 50, 100, 200, 500, 1000];
-            var labels = [];
+    //Legend code goes below
+    var legend = L.control({ position: "bottomright" });
 
-            // loop through our density intervals and generate a label with a colored square for each interval
-            for (var i = 0; i < classes.length; i++) {
-                //generate the div for the legend key and label using html
-                div.innerHTML +=
-                    '<i style="background:' +
-                    getColor(classes[i] + 1) +
-                    '"></i> ' +
-                    classes[i] +
-                    (classes[i + 1] ? "&ndash;" + classes[i + 1] + "<br>" : "+");
-            }
+    legend.onAdd = function (map) {
+      //using JS to create a div with id "info legend"
+      var div = L.DomUtil.create("div", "info legend");
+      const classes = [0, 10, 20, 50, 100, 200, 500, 1000];
+      var labels = [];
 
-            return div;
-        };
+      // loop through our density intervals and generate a label with a colored square for each interval
+      for (var i = 0; i < classes.length; i++) {
+        //generate the div for the legend key and label using html
+        div.innerHTML +=
+          '<i style="background:' +
+          getColor(classes[i] + 1) +
+          '"></i> ' +
+          classes[i] +
+          (classes[i + 1] ? "&ndash;" + classes[i + 1] + "<br>" : "+");
+      }
 
-        //Add legend to map
-        legend.addTo(map);
+      return div;
+    };
+
+    //Add legend to map
+    legend.addTo(map);
+
+    //Code for the linked panel
+    document.getElementById("panel").innerHTML = html_list;
+
+    // Bind event listeners to list items
+    //query all the HTML elements for the tag li with class panel.
+    let el = document.querySelectorAll("#panel li");
+
+    //Loop over  the list
+    for (let i = 0; i < el.length; i++) {
+      //For each bullet point in the list, define a mouse over event.
+      el[i].addEventListener("mouseover", function (e) {
+        //What is being hovered
+        const hoveredItem = e.target;
+        const layer = geoJson.getLayers();
+
+        //highlight the state by setting its style to the highlight style above.
+        layer[i].setStyle(highlightStyle);
+
+        //At the same time, add the CSS with class anme highlight to the list
+        hoveredItem.classList.add("highlight");
+      });
+
+      //Define behaviour when mouse out.
+      el[i].addEventListener("mouseout", function (e) {
+        const hoveredItem = e.target;
+        const hoveredId = hoveredItem.id;
+
+        //Resetting the styles for both list and map.
+        geoJson.resetStyle(geoJson.getLayer(hoveredId));
+        hoveredItem.classList.remove("highlight");
+      });
+    }
+  });
+
+//Set a style when the state is hovered
+const highlightStyle = {
+  weight: 2,
+  fillOpacity: 1
+};
+
+// Function applied on each polygon load
+function onEachFeature(feature, layer) {
+  const id = feature.id;
+  const name = feature.properties.name;
+
+  //Adding each bullet point in the list and specify the id the same as the id in the dataset
+  html_list += `<li id="${id}">${name}</li>`;
+  layer.leafletId = id;
+
+  //Define the behaviour when the mouse is on the feature
+  layer.addEventListener("mouseover", function (e) {
+    //Get the current feature
+    let hoveredFeature = e.target;
+
+    //Set the feature to the highlight style
+    hoveredFeature.setStyle(highlightStyle);
+
+    //console.log(layer.leafletId);
+    //Sroll the list to centre on the state being hovered by finding it using its id
+    let el = document.getElementById(hoveredFeature.leafletId);
+    //sroll the list
+    el.scrollIntoView({
+      behavior: "auto",
+      block: "center",
+      inline: "center"
     });
+
+    //Make the list item (i.e. state name highlighted) by adding the highlight CSS class
+    el.classList.add("highlight");
+  });
+
+  //Define the behaviour when the mouse is moving outside of the feature
+  layer.addEventListener("mouseout", function (e) {
+    //Get the current feature
+    let hoveredFeature = e.target;
+    //Reset the style for the hovered feature
+    geoJson.resetStyle(hoveredFeature);
+    //Remove the highlight by finding the right list with id and removing the CSS highlight
+    let el = document.getElementById(hoveredFeature.leafletId);
+    el.classList.remove("highlight");
+  });
+}

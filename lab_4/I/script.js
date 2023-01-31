@@ -23,7 +23,7 @@ L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
 
 // If it is an online geojson, we need to fetch it from the source.
 const data_url =
-  "https://raw.githubusercontent.com/Ziqi-Li/GEOG5015-WMM-Data-Repo/main/data/features.geojson";
+    "https://raw.githubusercontent.com/YukinoshitaErii/WebMap_Practices/main/lab_4/1.geojson"
 
 //Define an empty html for the list and
 let html_list = "";
