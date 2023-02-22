@@ -167,7 +167,7 @@ def retrive_data(file_location='.', data_class=[]):
             for root, dirs, files in os.walk(os.path.join(file_location, 'archives', 'FIRMS', c)):
                 for f in files:
                     if f[-4:] == '.txt':
-                        df.loc[len(df)] = [f[:-4], c, f[9:11], f[12:37], f[38:53], f[54:-4],convert(f[54:-4], 2),'https://raw.githubusercontent.com/YukinoshitaErii/WebMap_Practices/main/resourves/'+f[:-4]+'.geojson']
+                        df.loc[len(df)] = [f[:-4], c, f[9:11], f[12:37], f[38:53], f[54:-4],convert(f[54:-4], 2),'https://raw.githubusercontent.com/YukinoshitaErii/WebMap_Practices/main/resources/'+f[:-4]+'.geojson']
                         df1 = pd.read_csv(os.path.join(root,f),
                                           delimiter=",")
                         convert_geo_save(df1,a+'/resources',f[:-4])
@@ -181,7 +181,7 @@ def retrive_data(file_location='.', data_class=[]):
             for root, dirs, files in os.walk(os.path.join(file_location, 'archives', 'FIRMS', c)):
                 for f in files:
                     if f[-4:] == '.txt':
-                        df.loc[len(df)] = [f[:-4], c, f[6:10], f[11:36], f[37:48], f[49:-4],convert(f[49:-4], 2),'https://raw.githubusercontent.com/YukinoshitaErii/WebMap_Practices/main/resourves/'+f[:-4]+'.geojson']
+                        df.loc[len(df)] = [f[:-4], c, f[6:10], f[11:36], f[37:48], f[49:-4],convert(f[49:-4], 2),'https://raw.githubusercontent.com/YukinoshitaErii/WebMap_Practices/main/resources/'+f[:-4]+'.geojson']
                         df1 = pd.read_csv(os.path.join(root,f),
                                           delimiter=",")
                         convert_geo_save(df1,a+'/resources',f[:-4])
@@ -195,7 +195,7 @@ def retrive_data(file_location='.', data_class=[]):
                 for f in files:
                     if f[-4:] == '.txt':
                         print(f)
-                        df.loc[len(df)] = [f[:-4], c, '0', f[8:33], "0", f[-11:-4],convert(f[-11:-4], 2),'https://raw.githubusercontent.com/YukinoshitaErii/WebMap_Practices/main/resourves/'+f[:-4]+'.geojson']
+                        df.loc[len(df)] = [f[:-4], c, '0', f[8:33], "0", f[-11:-4],convert(f[-11:-4], 2),'https://raw.githubusercontent.com/YukinoshitaErii/WebMap_Practices/main/resources/'+f[:-4]+'.geojson']
                         df1 = pd.read_csv(os.path.join(root,f),
                                           delimiter=",")
                         convert_geo_save(df1,a+'/resources',f[:-4])
@@ -222,7 +222,7 @@ def update_json(file_location='.', data_class=[], df=pd.DataFrame):
                 for f in files:
                     if f[-4:] == '.txt':
                         if f[-4:] not in df['file_name'].values:
-                            df.loc[len(df)] = [f[:-4], c, f[9:11], f[12:37], f[38:53], f[54:-4], convert(f[54:-4], 2),'https://raw.githubusercontent.com/YukinoshitaErii/WebMap_Practices/main/resourves/'+f[:-4]+'.geojson']
+                            df.loc[len(df)] = [f[:-4], c, f[9:11], f[12:37], f[38:53], f[54:-4], convert(f[54:-4], 2),'https://raw.githubusercontent.com/YukinoshitaErii/WebMap_Practices/main/resources/'+f[:-4]+'.geojson']
                             df1 = pd.read_csv(os.path.join(root, f),
                                               delimiter=",")
                             convert_geo_save(df1, a+'/resources', f[:-4])
@@ -238,7 +238,7 @@ def update_json(file_location='.', data_class=[], df=pd.DataFrame):
                 for f in files:
                     if f[-4:] == '.txt':
                         if f[:-4] not in df['file_name'].values:
-                            df.loc[len(df)] = [f[:-4], c, f[6:10], f[11:36], f[37:48], f[49:-4], convert(f[49:-4], 2),'https://raw.githubusercontent.com/YukinoshitaErii/WebMap_Practices/main/resourves/'+f[:-4]+'.geojson']
+                            df.loc[len(df)] = [f[:-4], c, f[6:10], f[11:36], f[37:48], f[49:-4], convert(f[49:-4], 2),'https://raw.githubusercontent.com/YukinoshitaErii/WebMap_Practices/main/resources/'+f[:-4]+'.geojson']
                             df1 = pd.read_csv(os.path.join(root, f),
                                               delimiter=",")
                             convert_geo_save(df1, a+'/resources', f[:-4])
@@ -254,7 +254,7 @@ def update_json(file_location='.', data_class=[], df=pd.DataFrame):
                 for f in files:
                     if f[-4:] == '.txt':
                         if f[:-4] not in df['file_name'].values:
-                            df.loc[len(df)] = [f[:-4], c, '0', f[8:33], "0", f[-11:-4], convert(f[-11:-4], 2),'https://raw.githubusercontent.com/YukinoshitaErii/WebMap_Practices/main/resourves/'+f[:-4]+'.geojson']
+                            df.loc[len(df)] = [f[:-4], c, '0', f[8:33], "0", f[-11:-4], convert(f[-11:-4], 2),'https://raw.githubusercontent.com/YukinoshitaErii/WebMap_Practices/main/resources/'+f[:-4]+'.geojson']
                             df1 = pd.read_csv(os.path.join(root, f),
                                               delimiter=",")
                             convert_geo_save(df1, a+'/resources', f[:-4])
@@ -278,7 +278,7 @@ def detect():
         print('do 1')
         download_data([MODIS, LANDSAT, VIIRS], AREA, '.')
         git(n)
-    elif not os.path.exists('./list.json'):
+    if not os.path.exists('./list.json'):
         print("do 2")
         retrive_data('.', [MODIS, LANDSAT, VIIRS])
         git(n)
