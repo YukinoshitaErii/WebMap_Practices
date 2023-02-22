@@ -275,13 +275,16 @@ def detect():
     n = 0
     # if there is no json file/data then initiate it
     if not os.path.exists('./archives'):
+        print('do 1')
         download_data([MODIS, LANDSAT, VIIRS], AREA, '.')
         git(n)
     elif not os.path.exists('./list.json'):
+        print("do 2")
         retrive_data('.', [MODIS, LANDSAT, VIIRS])
         git(n)
     # update mode
     else:
+        print('do 3')
         x = datetime.datetime.now()
         x1 = np.datetime64(x.strftime("%Y-%m-%d"))
         df1 = pd.read_json('./list.json')
