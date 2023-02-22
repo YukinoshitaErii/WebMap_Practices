@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - A Pen by Lucky Zhang</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<html>
+   <!-- Mapbox JS API !-->`
+  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v2.9.2/mapbox-gl.js'></script>
+  <!-- Mapbox CSS!-->
+  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v2.9.2/mapbox-gl.css' rel='stylesheet' />
+  <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.min.js'></script>
+<link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.css' type='text/css' />
+  
+  
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded&display=swap" rel="stylesheet">
+<head>
+  <meta charset="utf-8">
+  <title>Swipe between maps</title>
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.css" rel="stylesheet">
+  <script src="https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.js"></script>
+   <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-compare/v0.4.0/mapbox-gl-compare.js"></script>
+  <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-compare/v0.4.0/mapbox-gl-compare.css" type="text/css">
+</head>
+
+<body>
+
+  
+  <div id="map"></div>
+   <div id="menu">
+    <h3>Choose the information</h3>
+    <label class="container">Edinburgh_SIMD
+      <input id="Edinburgh_SIMD" type="radio" checked="checked" name="radio"><br>
+      <span class="checkmark"></span>
+    </label>
+    <label class="container">EdinburghAnnualDailyAverageCarFlow)
+      <input id="EdinburghAnnualDailyAverageCarFlow" type="radio" name="radio">
+      <span class="checkmark"></span>
+
+   
+  
+  
+    </label>
+  </div>
+  <div class="map-overlay2" id="features2">
+     <h2> A combination map with SIMD and traffic information at Edinburgh. </h2>
+   <div id="pd">
+     <p> The base map is a Scottish Index of Multiple Deprivation(SIMD)  map of Edinburgh. Try to use the mouse to hover over the layer and right click the car icon(Vehicle flow count points). Summarize what did you find out? 
+     </p>
+     </div> 
+       </div>
+  <div class="map-overlay" id="legend">
+      <div>&#8592; More deprived</div>
+    </div>
+ 
+  
+</body>
+
+</html>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js'></script><script  src="./script.js"></script>
+
+</body>
+</html>
