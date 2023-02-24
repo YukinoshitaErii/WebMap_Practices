@@ -1,18 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
     <title>Map</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1' />
-    <link rel="stylesheet" href="./style.css">
+    <link href="dist/css/style1.css" rel="stylesheet" />
     <!-- Mapbox JS API !-->
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.js'></script>
     <!-- Mapbox CSS!-->
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.css' rel='stylesheet' />
 
+    <!-- geocoder API  !-->
+    <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.min.js'></script>
+    <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.css' type='text/css' />
+
+</head>
 <body>
 <div id='map'></div>
+<div id='console'>
+    <h1>Near-Real-Time Fire Map</h1>
+    <p>Data: <a href='https://firms.modaps.eosdis.nasa.gov/'>Fire data </a> in the Unite States</p>
+    <p>This a fire map based on FIRMS project of NASA. The map shows today fire point around the US and Mexico. </p>
+    <p>The map automatically update data 6 hours</p>
 
-<script src="./script.js"></script>
+    <div class='session'>
+        <h2>Satellite includes</h2>
+        <div class='row' id='filters'>
+            <div>Landsat(black)</div>
+            <div>Noaa-20-viirs-c2(purple)</div>
+            <div>Modis-c6.1(green)</div>
+        </div>
+    </div>
+
+</div>
+<script src="dist/js/scripts.js"></script>
 </body>
 </html>
