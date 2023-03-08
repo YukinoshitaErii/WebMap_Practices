@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-    <title>Map</title>
-    <link href="dist/css/style1.css" rel="stylesheet" />
+    <meta charset="UTF-8">
+    <title>U.S. Near Real Time Fire Map</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./style1.css">
+
     <!-- Mapbox JS API !-->
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.js'></script>
     <!-- Mapbox CSS!-->
@@ -17,24 +17,69 @@
     <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.css' type='text/css' />
 
 </head>
-<body>
-<div id='map'></div>
-<div id='console'>
-    <h1>Near-Real-Time Fire Map</h1>
-    <p>Data: <a href='https://firms.modaps.eosdis.nasa.gov/'>Fire data </a> in the Unite States</p>
-    <p>This a fire map based on FIRMS project of NASA. The map shows today fire point around the US and Mexico. </p>
-    <p>The map automatically update data 6 hours</p>
 
-    <div class='session'>
-        <h2>Satellite includes</h2>
-        <div class='row' id='filters'>
-            <div>Landsat(black)</div>
-            <div>Noaa-20-viirs-c2(purple)</div>
-            <div>Modis-c6.1(green)</div>
+<body>
+<!-- partial:index.partial.html -->
+<div class="nav-right visible-xs">
+    <div class="button" id="btn">
+        <div class="bar top"></div>
+        <div class="bar middle"></div>
+        <div class="bar bottom"></div>
+    </div>
+</div>
+<!-- nav-right -->
+<main>
+    <div id='map'></div>
+
+    <nav>
+        <div class="nav-right hidden-xs">
+            <div class="button" id="btn">
+                <div class="bar top"></div>
+                <div class="bar middle"></div>
+                <div class="bar bottom"></div>
+            </div>
         </div>
+        <!-- nav-right -->
+    </nav>
+
+    <a href="https://codepen.io/tonkec/" class="ua" target="_blank">
+        <i class="fa fa-user"></i>
+    </a>
+</main>
+
+<div class="sidebar-right-i">
+    <div class="sidebar">
+        <ul class="sidebar-list">
+            <li class="sidebar-item"><a href="#" class="sidebar-anchor introduction">Introduction</a></li>
+            <li class="sidebar-item"><a href="#" class="sidebar-anchor further">Further Information</a></li>
+            <li class="sidebar-item"><a href="#" class="sidebar-anchor author">Author</a></li>
+            <li class="sidebar-item"><a href="#" class="sidebar-anchor share">Share</a></li>
+        </ul>
     </div>
 
+    <div class="intro-list">
+        <div class="intro-text">
+            <div class="intro-text-frame">
+                <h1 id="introduction-tittle">Introduction section</h1>
+                <p id="introduction-paragraph">This is a introduction text\nxxxxxxxxxxxxxxxxxxxxxxxxxxxx\nxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\nxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
+            </div>
+        </div>
+    </div>
+    <!--further information panel-->
+    <div class="fur-list">
+        <div class="fur-text">
+            <div class="fur-text-frame">
+                <h1 id="fur-tittle">Introduction section</h1>
+                <p id="fur-paragraph">This is a introduction text\nxxxxxxxxxxxxxxxxxxxxxxxxxxxx\nxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\nxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
+            </div>
+        </div>
+    </div>
 </div>
-<script src="dist/js/scripts.js"></script>
+
+<!-- partial -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script src="./scripts.js"></script>
+
 </body>
+
 </html>
