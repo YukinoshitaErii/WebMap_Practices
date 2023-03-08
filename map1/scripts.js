@@ -261,4 +261,30 @@ map.on("load", () => {
             });
         }
     );
+
+
+    // add geocoder search control
+    const geocoder = new MapboxGeocoder({
+        // Initialize the geocoder
+        accessToken: mapboxgl.accessToken, // Set the access token
+        mapboxgl: mapboxgl, // Set the mapbox-gl instance
+        marker: false, // Do not use the default marker style
+        placeholder: "Search for places in US", // Placeholder text for the search bar
+        proximity: {
+            longitude: 55.8642,
+            latitude: 4.2518
+        }
+    });
+    map.addControl(geocoder, "top-left");
+    map.addControl(new mapboxgl.NavigationControl(), "top-left");
+    map.addControl(
+        new mapboxgl.GeolocateControl({
+            positionOptions: {
+                enableHighAccuracy: true
+            },
+            trackUserLocation: true,
+            showUserHeading: true
+        }),
+        "top-left"
+    );
 });
