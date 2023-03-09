@@ -1,112 +1,394 @@
-jQuery(function ($) {
-    $(document).ready(function () {
-        function toggleSidebar() {
-            $(".button").toggleClass("active");
-            $("main").toggleClass("move-to-left");
-            $(".sidebar-item").toggleClass("active");
-        }
+$(document).ready(function () {
+    function toggleSidebar() {
+        $(".button").toggleClass("active");
+        $("main").toggleClass("move-to-left");
+        $(".sidebar-item").toggleClass("active");
+    }
 
-        $(".button").on("click tap", function () {
+    $(".button").on("click tap", function () {
+        toggleSidebar();
+    });
+
+    $(document).keyup(function (e) {
+        if (e.keyCode === 27) {
             toggleSidebar();
-        });
-
-        $(document).keyup(function (e) {
-            if (e.keyCode === 27) {
-                toggleSidebar();
-            }
-        });
+        }
+    });
 
 
-        // right sidebar section
-        // on trigger
-        var further_on = 0;
-        var author_on = 0;
-        var share_on = 0;
-        var introduction_on = 0;
+    // right sidebar section
+    // right first trigger
+    let first_sign = 0;
+    let first_sign_i = 0;
 
-        // record times
-        // times trigger
-        var introduction_times = 0;
-        var author_times = 0;
-        var share_times = 0;
-        var further_times = 0;
-
-        // introduction section
-        $(".introduction").on("click tap", () => {
-            introduction_on = 1;
-            if (further_on == 1&&further_times==1) {
+    // introduction section
+    $(".introduction").on("click tap", () => {
+        // let first_sign_i = first_sign;
+        if (first_sign == 0) {
+            // introduction
+            $("main").toggleClass("intro");
+            $(".intro-list").toggleClass("intro");
+            $(".intro-text").toggleClass("intro");
+            $(".sidebar").toggleClass("intro");
+            $(".introduction").toggleClass("intro");
+            first_sign_i = 1;
+        } else if (first_sign == 1) {
+            $("main").toggleClass("intro");
+            $(".intro-list").toggleClass("intro");
+            $(".intro-text").toggleClass("intro");
+            $(".sidebar").toggleClass("intro");
+            $(".introduction").toggleClass("intro");
+            first_sign_i = 0;
+        } else {
+            if (first_sign == 2) {
                 $("main").toggleClass("fur");
                 $(".fur-list").toggleClass("fur");
                 $(".fur-text").toggleClass("fur");
                 $(".sidebar").toggleClass("fur");
-                further_on = 0;
-                further_times = 0;
-                console.log("introduction fur " + further_on);
+                $(".further").toggleClass("fur");
+                console.log("introduction further " + first_sign);
             }
-            if (introduction_on == 1) {
+            if (first_sign == 3) {
+                $("main").toggleClass("auth");
+                $(".author-list").toggleClass("auth");
+                $(".author-text").toggleClass("auth");
+                $(".sidebar").toggleClass("auth");
+                $(".author").toggleClass("auth");
+                console.log("introduction author " + first_sign);
+            }
+            if (first_sign == 4) {
+                $("main").toggleClass("sh");
+                $(".share-list").toggleClass("sh");
+                $(".share-text").toggleClass("sh");
+                $(".sidebar").toggleClass("sh");
+                $(".share").toggleClass("sh");
+                console.log("introduction share " + first_sign);
+            }
+            $("main").toggleClass("intro");
+            $(".intro-list").toggleClass("intro");
+            $(".intro-text").toggleClass("intro");
+            $(".sidebar").toggleClass("intro");
+            $(".introduction").toggleClass("intro");
+            first_sign_i = 1;
+        }
+        first_sign = first_sign_i;
+        console.log('first' + first_sign);
+    });
+
+    // further information toggle
+    $(".further").on("click tap", () => {
+        // let first_sign_i = first_sign;
+        if (first_sign == 0) {
+            // introduction
+            $("main").toggleClass("fur");
+            $(".fur-list").toggleClass("fur");
+            $(".fur-text").toggleClass("fur");
+            $(".sidebar").toggleClass("fur");
+            $(".further").toggleClass("fur");
+            first_sign_i = 2;
+        } else if (first_sign == 2) {
+            $("main").toggleClass("fur");
+            $(".fur-list").toggleClass("fur");
+            $(".fur-text").toggleClass("fur");
+            $(".sidebar").toggleClass("fur");
+            $(".further").toggleClass("fur");
+            first_sign_i = 0;
+        } else {
+            if (first_sign == 1) {
                 $("main").toggleClass("intro");
                 $(".intro-list").toggleClass("intro");
                 $(".intro-text").toggleClass("intro");
                 $(".sidebar").toggleClass("intro");
                 $(".introduction").toggleClass("intro");
-                introduction_times = introduction_times+1;
-                introduction_times = introduction_times%2;
-                console.log("introduction step");
-                console.log("introduction " + introduction_on);
-                console.log("introductitimes " + introduction_times);
-                console.log("furtheron " + further_on);
-                console.log("furthertimes " + further_times);
-                console.log('---------------')
+                console.log("further introduction" + first_sign);
             }
-        });
+            if (first_sign == 3) {
+                $("main").toggleClass("auth");
+                $(".author-list").toggleClass("auth");
+                $(".author-text").toggleClass("auth");
+                $(".sidebar").toggleClass("auth");
+                $(".author").toggleClass("auth");
+                console.log("further author " + first_sign);
+            }
+            if (first_sign == 4) {
+                $("main").toggleClass("sh");
+                $(".share-list").toggleClass("sh");
+                $(".share-text").toggleClass("sh");
+                $(".sidebar").toggleClass("sh");
+                $(".share").toggleClass("sh");
+                console.log("further share " + first_sign);
+            }
+            $("main").toggleClass("fur");
+            $(".fur-list").toggleClass("fur");
+            $(".fur-text").toggleClass("fur");
+            $(".sidebar").toggleClass("fur");
+            $(".further").toggleClass("fur");
+            first_sign_i = 2;
+        }
+        first_sign = first_sign_i;
+        console.log('first' + first_sign);
+    });
 
-        // further information toggle
-        $(".further").on("click tap", () => {
-            further_on = 1;
-            if (introduction_on == 1&&introduction_times==1) {
+
+    // author toggle
+    $(".author").on("click tap", () => {
+        if (first_sign == 0) {
+            // author
+            $("main").toggleClass("auth");
+            $(".author-list").toggleClass("auth");
+            $(".author-text").toggleClass("auth");
+            $(".sidebar").toggleClass("auth");
+            $(".author").toggleClass("auth");
+            first_sign_i = 3;
+        } else if (first_sign == 3) {
+            $("main").toggleClass("auth");
+            $(".author-list").toggleClass("auth");
+            $(".author-text").toggleClass("auth");
+            $(".sidebar").toggleClass("auth");
+            $(".author").toggleClass("auth");
+            first_sign_i = 0;
+        } else {
+            if (first_sign == 1) {
                 $("main").toggleClass("intro");
                 $(".intro-list").toggleClass("intro");
                 $(".intro-text").toggleClass("intro");
                 $(".sidebar").toggleClass("intro");
                 $(".introduction").toggleClass("intro");
-                introduction_on = 0;
-                introduction_times = 0;
-                console.log("fur introduction" + introduction_on);
+                console.log("author introduction" + first_sign);
             }
-            if (further_on == 1) {
+            if (first_sign == 2) {
                 $("main").toggleClass("fur");
                 $(".fur-list").toggleClass("fur");
                 $(".fur-text").toggleClass("fur");
                 $(".sidebar").toggleClass("fur");
-                further_times = further_times+1;
-                further_times = further_times%2;
-                console.log("further step");
-                console.log("introduction " + introduction_on);
-                console.log("introductitimes " + introduction_times);
-                console.log("furtheron " + further_on);
-                console.log("furthertimes " + further_times);
-                console.log('---------------')
+                $(".further").toggleClass("fur");
+                console.log("author further " + first_sign);
             }
-
-        });
-
-
-        // author toggle
-        $(".author").on("click tap", () => {
-            author_on = 1;
-            if (author_on == 1) {
-                alert("author_on");
+            if (first_sign == 4) {
+                $("main").toggleClass("sh");
+                $(".share-list").toggleClass("sh");
+                $(".share-text").toggleClass("sh");
+                $(".sidebar").toggleClass("sh");
+                $(".share").toggleClass("sh");
+                console.log("author share " + first_sign);
             }
-        });
+            $("main").toggleClass("auth");
+            $(".author-list").toggleClass("auth");
+            $(".author-text").toggleClass("auth");
+            $(".sidebar").toggleClass("auth");
+            $(".author").toggleClass("auth");
+            first_sign_i = 3;
+        }
+        first_sign = first_sign_i;
+        console.log('first' + first_sign);
+    });
 
-        // share toggle
-        $(".share").on("click tap", () => {
-            share_on = 1;
-            if (share_on == 1) {
-                alert("share_on");
+    // share toggle
+    $(".share").on("click tap", () => {
+        if (first_sign == 0) {
+            $("main").toggleClass("sh");
+            $(".share-list").toggleClass("sh");
+            $(".share-text").toggleClass("sh");
+            $(".sidebar").toggleClass("sh");
+            $(".share").toggleClass("sh");
+            first_sign_i = 4;
+        } else if (first_sign == 4) {
+            $("main").toggleClass("sh");
+            $(".share-list").toggleClass("sh");
+            $(".share-text").toggleClass("sh");
+            $(".sidebar").toggleClass("sh");
+            $(".share").toggleClass("sh");
+            first_sign_i = 0;
+        } else {
+            if (first_sign == 1) {
+                $("main").toggleClass("intro");
+                $(".intro-list").toggleClass("intro");
+                $(".intro-text").toggleClass("intro");
+                $(".sidebar").toggleClass("intro");
+                $(".introduction").toggleClass("intro");
+                console.log("share introduction" + first_sign);
             }
-        });
+            if (first_sign == 2) {
+                $("main").toggleClass("fur");
+                $(".fur-list").toggleClass("fur");
+                $(".fur-text").toggleClass("fur");
+                $(".sidebar").toggleClass("fur");
+                $(".further").toggleClass("fur");
+                console.log("share further " + first_sign);
+            }
+            if (first_sign == 3) {
+                $("main").toggleClass("auth");
+                $(".author-list").toggleClass("auth");
+                $(".author-text").toggleClass("auth");
+                $(".sidebar").toggleClass("auth");
+                $(".author").toggleClass("auth");
+                console.log("share author " + first_sign);
+            }
+            $("main").toggleClass("sh");
+            $(".share-list").toggleClass("sh");
+            $(".share-text").toggleClass("sh");
+            $(".sidebar").toggleClass("sh");
+            $(".share").toggleClass("sh");
+            first_sign_i = 4;
+        }
+        first_sign = first_sign_i;
+        console.log('first' + first_sign);
+    });
 
+
+    // right part
+
+    // data part
+    $(".data-button").on("click tap", function () {
+        $("main").toggleClass("data-move");
+        $(".data-panel").toggleClass("dp");
+        $(".data-panel-item").toggleClass("dp");
+    });
+
+    var data_sign = 0;
+    var data_sign_i = 0;
+
+    // date section
+    $(".date").on("click tap", () => {
+        if (data_sign == 0) {
+            $("main").toggleClass("dates");
+            $(".date-list").toggleClass("dates");
+            $(".date-text").toggleClass("dates");
+            $(".data-panel").toggleClass("dates");
+            $(".date").toggleClass("dates");
+            data_sign_i = 1;
+        } else if (data_sign == 1) {
+            $("main").toggleClass("dates");
+            $(".date-list").toggleClass("dates");
+            $(".date-text").toggleClass("dates");
+            $(".data-panel").toggleClass("dates");
+            $(".date").toggleClass("dates");
+            data_sign_i = 0;
+        } else {
+            if (data_sign == 2) {
+                $("main").toggleClass("lay");
+                $(".layer-list").toggleClass("lay");
+                $(".layer-text").toggleClass("lay");
+                $(".data-panel").toggleClass("lay");
+                $(".layer").toggleClass("lay");
+                console.log("date layer " + data_sign);
+            }
+            if (data_sign == 3) {
+                $("main").toggleClass("base");
+                $(".basemap-list").toggleClass("base");
+                $(".basemap-text").toggleClass("base");
+                $(".data-panel").toggleClass("base");
+                $(".basemap").toggleClass("base");
+                console.log("date basemap " + data_sign);
+            }
+            $("main").toggleClass("dates");
+            $(".date-list").toggleClass("dates");
+            $(".date-text").toggleClass("dates");
+            $(".data-panel").toggleClass("dates");
+            $(".date").toggleClass("dates");
+            data_sign_i = 1;
+        }
+        data_sign = data_sign_i;
+        console.log('1' + data_sign);
+    });
+
+
+    // basemap section
+    $(".basemap").on("click tap", () => {
+        if (data_sign == 0) {
+            $("main").toggleClass("base");
+            $(".basemap-list").toggleClass("base");
+            $(".basemap-text").toggleClass("base");
+            $(".data-panel").toggleClass("base");
+            $(".basemap").toggleClass("base");
+            data_sign_i = 3;
+        } else if (data_sign == 3) {
+            $("main").toggleClass("base");
+            $(".basemap-list").toggleClass("base");
+            $(".basemap-text").toggleClass("base");
+            $(".data-panel").toggleClass("base");
+            $(".basemap").toggleClass("base");
+            data_sign_i = 0;
+        } else {
+            if (data_sign == 2) {
+                $("main").toggleClass("lay");
+                $(".layer-list").toggleClass("lay");
+                $(".layer-text").toggleClass("lay");
+                $(".data-panel").toggleClass("lay");
+                $(".layer").toggleClass("lay");
+                console.log("basemap layer " + data_sign);
+            }
+            if (data_sign == 1) {
+                $("main").toggleClass("dates");
+                $(".date-list").toggleClass("dates");
+                $(".date-text").toggleClass("dates");
+                $(".data-panel").toggleClass("dates");
+                $(".date").toggleClass("dates");
+                console.log("basemap date" + data_sign);
+            }
+            $("main").toggleClass("base");
+            $(".basemap-list").toggleClass("base");
+            $(".basemap-text").toggleClass("base");
+            $(".data-panel").toggleClass("base");
+            $(".basemap").toggleClass("base");
+            data_sign_i = 3;
+        }
+        data_sign = data_sign_i;
+        console.log('1' + data_sign);
+    });
+
+
+    // layer section
+    $(".layer").on("click tap", () => {
+        if (data_sign == 0) {
+            $("main").toggleClass("lay");
+            $(".layer-list").toggleClass("lay");
+            $(".layer-text").toggleClass("lay");
+            $(".data-panel").toggleClass("lay");
+            $(".layer").toggleClass("lay");
+            data_sign_i = 2;
+        } else if (data_sign == 2) {
+            $("main").toggleClass("lay");
+            $(".layer-list").toggleClass("lay");
+            $(".layer-text").toggleClass("lay");
+            $(".data-panel").toggleClass("lay");
+            $(".layer").toggleClass("lay");
+            data_sign_i = 0;
+        } else {
+            if (data_sign == 3) {
+                $("main").toggleClass("base");
+                $(".basemap-list").toggleClass("base");
+                $(".basemap-text").toggleClass("base");
+                $(".data-panel").toggleClass("base");
+                $(".basemap").toggleClass("base");
+                console.log("layer basemap" + data_sign);
+            }
+            if (data_sign == 1) {
+                $("main").toggleClass("dates");
+                $(".date-list").toggleClass("dates");
+                $(".date-text").toggleClass("dates");
+                $(".data-panel").toggleClass("dates");
+                $(".date").toggleClass("dates");
+                console.log("layer date" + data_sign);
+            }
+            $("main").toggleClass("lay");
+            $(".layer-list").toggleClass("lay");
+            $(".layer-text").toggleClass("lay");
+            $(".data-panel").toggleClass("lay");
+            $(".layer").toggleClass("lay");
+            data_sign_i = 2;
+        }
+        data_sign = data_sign_i;
+        console.log('1' + data_sign);
+    });
+
+
+    // second section
+    // function panel
+    $(".function-button").on("click tap", function () {
+        $("main").toggleClass("function-move");
+        $(".function-panel").toggleClass("fun");
+        $(".function-panel-item").toggleClass("fun");
     });
 });
 

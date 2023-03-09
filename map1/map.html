@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <title>U.S. Near Real Time Fire Map</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+<!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">-->
+    <script src="https://kit.fontawesome.com/c166cdedd8.js" crossorigin="anonymous"></script>
+<!--    <link rel="stylesheet" href="https://kit.fontawesome.com/c166cdedd8.css" crossorigin="anonymous">-->
     <link rel="stylesheet" href="./style1.css">
 
     <!-- Mapbox JS API !-->
@@ -43,11 +45,23 @@
     </nav>
 
     <a href="https://github.com/YukinoshitaErii/WebMap_Practices" class="ua" target="_blank">
-        <i class="fa fa-user"></i>
+        <i class="fa-solid fa-user"></i>
     </a>
+
+    <div class="data-button" id="data-b">
+        <i class="fa-solid fa-database"></i>
+    </div>
+
+    <div class="function-button" id="funtion-b">
+        <i class="fa-solid fa-chart-simple"></i>
+    </div>
+
+    <div class="legend-button" id="legend-b">
+        <i class="fa-solid fa-map"></i>
+    </div>
 </main>
 
-<div class="sidebar-right-i">
+<div class="sidebar-i">
     <div class="sidebar">
         <ul class="sidebar-list">
             <li class="sidebar-item"><a href="#" class="sidebar-anchor introduction">Introduction</a></li>
@@ -56,7 +70,7 @@
             <li class="sidebar-item"><a href="#" class="sidebar-anchor share">Share</a></li>
         </ul>
     </div>
-
+<!--introduction panel-->
     <div class="intro-list">
         <div class="intro-text">
             <div class="intro-text-frame">
@@ -76,6 +90,96 @@
                 <p id="fur-paragraph">This is a introduction text\nxxxxxxxxxxxxxxxxxxxxxxxxxxxx\nxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\nxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
             </div>
         </div>
+    </div>
+
+    <!--author panel-->
+    <div class="author-list">
+        <div class="author-text">
+            <div class="author-text-frame">
+                <h1 id="author-tittle">author section</h1>
+                <p id="author-paragraph">This is a introduction text\nxxxxxxxxxxxxxxxxxxxxxxxxxxxx\nxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\nxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
+            </div>
+        </div>
+    </div>
+
+    <!--share panel-->
+    <div class="share-list">
+        <div class="share-text">
+            <div class="share-text-frame">
+                <h1 id="share-tittle">share section</h1>
+                <p id="share-paragraph">This is a introduction text\nxxxxxxxxxxxxxxxxxxxxxxxxxxxx\nxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\nxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+<!-- left part-->
+
+    <!--    data panel-->
+    <div class="data-panel">
+        <ul class="data-panel-list">
+            <li class="data-panel-item"><a href="#" class="data-panel-anchor date">Date</a></li>
+            <li class="data-panel-item"><a href="#" class="data-panel-anchor layer">Layer</a></li>
+            <li class="data-panel-item"><a href="#" class="data-panel-anchor basemap">Basemap</a></li>
+        </ul>
+    </div>
+
+<!--    data second part -->
+<!--    Date part -->
+    <div class="date-list">
+        <div class="date-text">
+            <div class="date-text-frame">
+                <h1 id="date-tittle">U.S. contiguous continent fire map</h1>
+                <p id="date-paragraph">This is a U.S near real fire map.
+                    USA_contiguous_and_Hawaii
+                    Data from NASA FIRMS project
+                    Data from map update every 6 hours</p>
+            </div>
+        </div>
+    </div>
+
+    <!--layer panel-->
+    <div class="layer-list">
+        <div class="layer-text">
+            <div class="layer-text-frame">
+                <h1 id="layer-tittle">Introduction section</h1>
+                <p id="layer-paragraph">This is a introduction text\nxxxxxxxxxxxxxxxxxxxxxxxxxxxx\nxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\nxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
+            </div>
+        </div>
+    </div>
+
+    <!--basemap panel-->
+    <div class="basemap-list">
+<!--        <div class="basemap-text">-->
+<!--            <div class="basemap-text-frame">-->
+<!--                <h1 id="basemap-tittle">basemap section</h1>-->
+<!--                <p id="basemap-paragraph">This is a introduction text\nxxxxxxxxxxxxxxxxxxxxxxxxxxxx\nxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\nxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>-->
+<!--            </div>-->
+<!--        </div>-->
+        <ul class="basemap-list-frame">
+            <li class="basemap-list-item"><img src="./1.png"></li>
+            <li class="basemap-list-item"><img src="2.png"></li>
+            <li class="basemap-list-item"><img src="3.png"></li>
+            <li class="basemap-list-item"><img src="4.png"></li>
+    </div>
+
+
+
+
+
+
+
+    <!--    function panel-->
+    <div class="function-panel">
+        <ul class="function-panel-list">
+            <li class="function-panel-item"><a href="#" class="function-panel-anchor first">Date1</a></li>
+            <li class="function-panel-item"><a href="#" class="function-panel-anchor second">Layer1</a></li>
+            <li class="function-panel-item"><a href="#" class="function-panel-anchor third">Basemap1</a></li>
+        </ul>
     </div>
 </div>
 
